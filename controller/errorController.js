@@ -33,6 +33,9 @@ const sendErrorProd = (error, res) => {
 }
 
 const globalErrorHandler = (err, req, res, next) => {
+    if(err.name === 'JsonWebTokenError') {
+        err = new appError('Invalid Token', 401)
+    }
     if(err.name === 'SequelizeValidationError') {
         err = new appError(err.errors[0].message, 400)
     }
