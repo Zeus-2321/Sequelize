@@ -8,9 +8,11 @@ const app = express();
 app.use(express.json());
 
 const authRouter = require('./routes/authRoute');
+const projectRouter = require('./routes/projectRoute');
 const globalErrorHandler = require('./controller/errorController');
 
 app.use('/api/auth', authRouter);
+app.use('/api/projects', projectRouter);
 
 app.use('*', catchAsync(
      async(req, res, next) => {

@@ -93,6 +93,7 @@ module.exports = sequelize.define('project', {
   },
   category: {
     type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: false,
     validate: {
       notNull: {
         msg: 'category cannot be null',
@@ -101,6 +102,7 @@ module.exports = sequelize.define('project', {
   },
   tags: {
     type: DataTypes.ARRAY(DataTypes.STRING),
+    allowNull: false,
     validate: {
       notNull: {
         msg: 'tags cannot be null',
