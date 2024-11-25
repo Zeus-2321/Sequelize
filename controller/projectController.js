@@ -1,5 +1,6 @@
 const catchAsync = require("../utils/catchAsync");
 const project = require("../db/models/project");
+const user = require("../db/models/user");
 
 const createProject = catchAsync(async (req, res, next) => {
     const body = req.body;
@@ -25,7 +26,7 @@ const createProject = catchAsync(async (req, res, next) => {
 })
 
 const getAllProject = catchAsync(async (req, res, next) => {
-    const result = await project.findAll();
+    const result = await project.findAll({ include:user });
 
     return res.json({
         status: 'success',
