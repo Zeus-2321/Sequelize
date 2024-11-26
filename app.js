@@ -9,10 +9,12 @@ app.use(express.json());
 
 const authRouter = require('./routes/authRoute');
 const projectRouter = require('./routes/projectRoute');
+const userRouter = require('./routes/userRoute');
 const globalErrorHandler = require('./controller/errorController');
 
 app.use('/api/auth', authRouter);
 app.use('/api/projects', projectRouter);
+app.use('/api/users', userRouter);
 
 app.use('*', catchAsync(
      async(req, res, next) => {
